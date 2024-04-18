@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using intro.Business;
+using intro.DataAccess.Concretes;
 using intro.Entities;
 
 Console.WriteLine("Hello, World!");
@@ -28,43 +29,14 @@ for (int i = 0; i < loans.Length; i++)
     Console.WriteLine(loans[i]);
 }
 
-CourseManager courseManager = new CourseManager();
-Course[] courses2 = courseManager.GetAll();
+CourseManager courseManager = new (new EfCourseDal());
 
-for (int i = 0; i < courses2.Length; i++)
+List<Course> courses2 = courseManager.GetAll();
+
+for (int i = 0; i < courses2.Count; i++)
 {
     Console.WriteLine(courses2[i].Name + " / " + courses2[i].Price);
 }
-
-int gun = 9;
-switch (gun)
-{
-    case 1:
-        Console.WriteLine("Pazartesi");
-        break;
-        case 2:
-        Console.WriteLine("Salı");
-        break;
-        case 3:
-        Console.WriteLine("Çarşamba");
-        break;
-        case 4:
-        Console.WriteLine("Perşembe");
-        break;
-        case 5:
-        Console.WriteLine("Cuma");
-        break;
-        case 6:
-        Console.WriteLine("Cumartesi");
-        break;
-       case 7:
-        Console.WriteLine("Pazar");
-        break;
-        default:
-        Console.WriteLine("Geçersiz gün girdiniz");
-        break;
-}
-
 
 Console.WriteLine("kod bitti");
 
